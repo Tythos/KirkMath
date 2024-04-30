@@ -8,6 +8,6 @@ But we splice/track it here for historical purposes until Artemis is no longer d
 
 # TODO:
 
-- [ ] Fix or rewrite string formatters
+- [x] Fix or rewrite string formatters
 
 - [ ] Adjust / improve SDL submodule inclusion (currently directly to headers only)
