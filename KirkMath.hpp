@@ -7,16 +7,16 @@
 #include <iostream>
 #include <math.h>
 #include <stdio.h>
-#include <SDL.h>
-#include <SDL_opengl.h>
+#include "SDL/include/SDL.h"
+#include "SDL/include/SDL_opengl.h"
 #define SMALL_FLOAT 0.0001f
 
 namespace KirkMath {
     class Vec {
     private:
+    protected:
         float * vec;
         int len;
-    protected:
     public:
         // Constructors
         Vec();
@@ -47,9 +47,9 @@ namespace KirkMath {
     
     class Mat {
     private:
+    protected:
         Vec * mat;
         int r; int c;
-    protected:
     public:
         // Constructors
         Mat();
@@ -137,10 +137,10 @@ namespace KirkMath {
 
     class Trans {
     private:
+    protected:
         Quat * _pos; // Position of child frame. Only i, j, k are used; scl should always be 0
         Quat * _rot; // Rotation of child frame about parent frame. Does NOT store a rotation quaternion, but rather the strict angle-and-vector rotation values
         Quat * _scl; // Scaling of object along local axes
-    protected:
     public:
         Trans();
         ~Trans();

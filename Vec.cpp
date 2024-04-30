@@ -55,7 +55,7 @@ float KirkMath::Vec::abs() {
 }
 
 // --- Operators --- //
-std::ostream & operator<<(std::ostream &os, const KirkMath::Vec &myVec) {
+std::ostream& operator<<(std::ostream& os, const KirkMath::Vec &myVec) {
 	int i = 0;
 	os << "[";
 	for (i = 0; i < myVec.len-1; i++) {		
