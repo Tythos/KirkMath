@@ -1,17 +1,17 @@
 /*
- * numericMath.cpp
+ * numerics.cpp
  */
 
 #include "KirkMath.hpp"
 
-int KirkMath::numericMath::gIterLimit = 0;
-float KirkMath::numericMath::gTolerance = 0.001f;
+const int KirkMath::numerics::gIterLimit = 0;
+const float KirkMath::numerics::gTolerance = 0.001f;
 
-float KirkMath::numericMath::bisectionRoot(float(*f)(float), float low, float high) {
+float KirkMath::numerics::bisectionRoot(float(*f)(float), float low, float high) {
     // Solve for the root of function f via bisection from low, high
     float mid = (low + high) / 2.0f;
     int iter = 0;
-    while (f(low) * f(high) < 0 && fabs(f(mid)) > gTolerance) {
+    while (f(low) * f(high) < 0 && fabs(f(mid)) > KirkMath::numerics::gTolerance) {
         mid = (low + high) / 2.0f;
         if (f(low) * f(mid) < 0) high = mid;
         else if (f(high) * f(mid) < 0) low = mid;
@@ -20,44 +20,28 @@ float KirkMath::numericMath::bisectionRoot(float(*f)(float), float low, float hi
     return mid;
 }
 	
-float KirkMath::numericMath::bisectionSolve(float(*f)(float), float low, float high, float target) {
+float KirkMath::numerics::bisectionSolve(float(*f)(float), float low, float high, float target) {
     // Solve for the root of function f via bisection from low, high
     float mid = (low + high) / 2.0f;
     int iter = 0;
-    while ((f(low)-target) * (f(high)-target) < 0 && fabs(f(mid)-target) > gTolerance && iter < gIterLimit) {
+    while ((f(low)-target) * (f(high)-target) < 0 && fabs(f(mid)-target) > KirkMath::numerics::gTolerance && iter < KirkMath::numerics::gIterLimit) {
         mid = (low + high) / 2.0f;
         if ((f(low)-target) * (f(mid)-target) < 0) high = mid;
         else if ((f(high)-target) * (f(mid)-target) < 0) low = mid;
         iter++;
     }
-    if (iter == gIterLimit)
+    if (iter == KirkMath::numerics::gIterLimit)
         printf("Numerical Error: Iteration limit reached w/o convergence via bisection\n");
     return mid;
 }
-	
-float KirkMath::numericMath::getTolerance() {
-    return gTolerance;
-}
-	
-void KirkMath::numericMath::setTolerance(float value) {
-    gTolerance = value;
-}
-	
-int KirkMath::numericMath::getIterLimit() {
-    return gIterLimit;
-}
-	
-void KirkMath::numericMath::setIterLimit(int value) {
-    gIterLimit = value;
-}
 
-float KirkMath::numericMath::fmod(float a, float b) {
+float KirkMath::numerics::fmod(float a, float b) {
     if (b == 0) return a;
     int result = static_cast<int>( a / b );
     return a - static_cast<float>( result ) * b;
 }
 	
-int KirkMath::numericMath::nextpoweroftwo(int x) {
+int KirkMath::numerics::nextpoweroftwo(int x) {
     float arg = (float)x;
     double logbase2 = log(arg) / log(2.0f);
     double d = pow(2, ceil(logbase2));

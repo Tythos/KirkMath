@@ -5,5 +5,5 @@ add_library(${PROJECT_NAME} STATIC
     "Quat.cpp"
     "Trans.cpp"
     "Vec.cpp"
-    "numericMath.cpp"
+    "numerics.cpp"
 )

@@ -48,8 +48,9 @@ namespace KirkMath {
     class Mat {
     private:
     protected:
-        Vec * mat;
-        int r; int c;
+        Vec* mat;
+        int r;
+        int c;
     public:
         // Constructors
         Mat();
@@ -76,8 +77,8 @@ namespace KirkMath {
         float det();
         
         // Operators
-        friend std::ostream& operator <<(std::ostream &os, const Mat &myMat);
-        friend std::ostream& operator <<(std::ostream &os, Mat *myMat);
+        friend std::ostream& operator<<(std::ostream &os, const Mat &myMat);
+        friend std::ostream& operator<<(std::ostream &os, Mat* myMat);
         Vec& operator[](int i);
         Vec operator *(Vec b);
         Mat operator *(Mat b);
@@ -162,7 +163,10 @@ namespace KirkMath {
         void update(Quat* linearVelocity, Quat* angularVelocity, float dt);
     };    
 
-    namespace numericMath {
+    namespace numerics {
+        extern const int gIterLimit;
+        extern const float gTolerance;
+
         float getTolerance();
         void setTolerance(float value);
         int getIterLimit();

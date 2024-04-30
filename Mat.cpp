@@ -205,7 +205,8 @@ float KirkMath::Mat::det() {
 }
 
 // --- Operators ---//
-std::ostream& operator <<(std::ostream &os, const KirkMath::Mat &myMat) {
+
+std::ostream& KirkMath::operator<<(std::ostream &os, const KirkMath::Mat& myMat) {
 	os << std::endl;
 	for (int i = 0; i < myMat.r; i++) {
 		if (i == 0 || i == myMat.r - 1) os << "+";
@@ -218,7 +219,7 @@ std::ostream& operator <<(std::ostream &os, const KirkMath::Mat &myMat) {
 	return os;
 }
 
-std::ostream& operator <<(std::ostream &os, KirkMath::Mat *myMat) {
+std::ostream& KirkMath::operator<<(std::ostream &os, KirkMath::Mat *myMat) {
 	os << (*myMat);
 	return os;
 }
